@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "retrieved_at": "2026-09-07",
+  "basemaps": [
+    {
+      "style": "greyscale",
+      "item_id": "805a6f2de49841e8b390cd54d91e53ad",
+      "title": "Iowa DOT Greyscale Basemap",
+      "modified": 1784219868000,
+      "layers": [
+        {
+          "id": "VectorTile_647",
+          "opacity": 1,
+          "title": "Greyscale Basemap Features",
+          "visibility": true,
+          "itemId": "7d5bf998ad9d47588e9475d1956124f0",
+          "layerType": "VectorTileLayer",
+          "styleUrl": "https://tiles.arcgis.com/tiles/8lRhdTsQyJpO52F1/arcgis/rest/services/Greyscale_Basemap_Features/VectorTileServer/resources/styles/root.json",
+          "item_modified": 1784219291000,
+          "item_title": "Greyscale Basemap Features"
+        },
+        {
+          "id": "VectorTile_329",
+          "opacity": 1,
+          "title": "Greyscale Basemap Labels",
+          "visibility": true,
+          "itemId": "114992eb8d034a56ab2b227c785be73a",
+          "layerType": "VectorTileLayer",
+          "styleUrl": "https://tiles.arcgis.com/tiles/8lRhdTsQyJpO52F1/arcgis/rest/services/Greyscale_Basemap_Labels/VectorTileServer/resources/styles/root.json",
+          "isReference": true,
+          "item_modified": 1784219139000,
+          "item_title": "Greyscale Basemap Labels"
+        }
+      ]
+    },
+    {
+      "style": "dark",
+      "item_id": "ef58c25cf11b4a58a50e85e1e01b0bed",
+      "title": "Iowa DOT Dark Greyscale Basemap",
+      "modified": 1784219832000,
+      "layers": [
+        {
+          "id": "VectorTile_6204",
+          "type": "VectorTileLayer",
+          "layerType": "VectorTileLayer",
+          "title": "DarkGreyscale Basemap Features",
+          "styleUrl": "https://tiles.arcgis.com/tiles/8lRhdTsQyJpO52F1/arcgis/rest/services/DarkGreyscale_Basemap_Features/VectorTileServer/resources/styles/root.json",
+          "itemId": "91330fe8cd4a4c2c8b233463d700890a",
+          "visibility": true,
+          "opacity": 1,
+          "minScale": 295828763.7957775,
+          "maxScale": 564.248588,
+          "item_modified": 1784218823000,
+          "item_title": "DarkGreyscale Basemap Features"
+        },
+        {
+          "id": "VectorTile_2334",
+          "type": "VectorTileLayer",
+          "layerType": "VectorTileLayer",
+          "title": "DarkGreyscale Basemap Labels",
+          "styleUrl": "https://tiles.arcgis.com/tiles/8lRhdTsQyJpO52F1/arcgis/rest/services/DarkGreyscale_Basemap_Labels/VectorTileServer/resources/styles/root.json",
+          "itemId": "989e33682ff94f7b89d3448cadc6f443",
+          "isReference": true,
+          "visibility": true,
+          "opacity": 1,
+          "item_modified": 1784218942000,
+          "item_title": "DarkGreyscale Basemap Labels"
+        }
+      ]
+    },
+    {
+      "style": "color",
+      "item_id": "77831691f545442e9bb57ed1e8ad7957",
+      "title": "Iowa DOT Color Basemap",
+      "modified": 1784219858000,
+      "layers": [
+        {
+          "id": "VectorTile_5611",
+          "type": "VectorTileLayer",
+          "layerType": "VectorTileLayer",
+          "title": "Color Basemap Features",
+          "styleUrl": "https://tiles.arcgis.com/tiles/8lRhdTsQyJpO52F1/arcgis/rest/services/Color_Basemap_Features/VectorTileServer/resources/styles/root.json",
+          "itemId": "543f00997b9a44b0b04d74d26d69ce07",
+          "visibility": true,
+          "opacity": 1,
+          "item_modified": 1784219640000,
+          "item_title": "Color Basemap Features"
+        },
+        {
+          "id": "VectorTile_910",
+          "type": "VectorTileLayer",
+          "layerType": "VectorTileLayer",
+          "title": "Color Basemap Labels",
+          "styleUrl": "https://tiles.arcgis.com/tiles/8lRhdTsQyJpO52F1/arcgis/rest/services/Color_Basemap_Labels/VectorTileServer/resources/styles/root.json",
+          "itemId": "f998d332039a4c9c814ab711a86a8025",
+          "isReference": true,
+          "visibility": true,
+          "opacity": 1,
+          "item_modified": 1784219487000,
+          "item_title": "Color Basemap Labels"
+        }
+      ]
+    }
+  ]
+}

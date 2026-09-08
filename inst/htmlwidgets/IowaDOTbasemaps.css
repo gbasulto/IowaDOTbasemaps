@@ -1,0 +1,11 @@
+/* Scoped to IowaDOTbasemaps panes: never alter ordinary Leaflet overlay/marker panes. */
+.leaflet-pane.IowaDOTbasemaps-pane,
+.leaflet-pane.IowaDOTbasemaps-pane * {
+  pointer-events: none !important;
+}
+.IowaDOTbasemaps-pane .leaflet-gl-layer { position: absolute; }
+.IowaDOTbasemaps-notice {
+  background: #fff; color: #742600; padding: 8px 10px;
+  border: 1px solid #c77043; border-radius: 4px;
+  max-width: 320px; font: 12px/1.4 sans-serif;
+}
