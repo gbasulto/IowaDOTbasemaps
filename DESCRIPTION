@@ -4,10 +4,10 @@ Title: Iowa DOT and CARTO Basemaps for Leaflet
 Version: 0.1.0
 Authors@R: person("Guillermo", "Basulto-Elias", role = c("aut", "cre"),
     email = "basulto@iastate.edu")
-Description: Adds live Iowa Department of Transportation vector basemaps and
-    authenticated CARTO basemaps to Leaflet maps and Shiny map proxies. Keeps
-    basemap rendering below ordinary incident overlays, manages asynchronous
-    layer removal, and provides catalog inspection and refresh utilities.
+Description: Adds live Iowa Department of Transportation vector basemaps to 
+  Leaflet maps and Shiny map proxies. Keeps basemap rendering below ordinary 
+  incident overlays, manages asynchronous layer removal, and provides catalog 
+  inspection and refresh utilities.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 4.1.0)
