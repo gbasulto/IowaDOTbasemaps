@@ -9,3 +9,4 @@ node_modules/
 .httr-oauth
 .DS_Store
 .quarto
+*.Rproj

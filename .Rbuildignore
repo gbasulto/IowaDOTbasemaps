@@ -5,3 +5,5 @@
 ^\.Rproj\.user$
 ^README\.Rmd$
 ^IowaDOTbasemaps\.Rproj$
+^MAINTENANCE\.md$
+^VALIDATION\.md$
