@@ -61,7 +61,7 @@
 #' @param style CARTO style name.
 #' @param api_key Your CARTO basemap key. Defaults to environment variable \code{CARTO_API_KEY}.
 #' @param group Leaflet group name; defaults to the CARTO style title.
-#' @param layerId Basemap identifier, default \code{ctremaps-carto-STYLE}.
+#' @param layerId Basemap identifier, default \code{IowaDOTbasemaps-carto-STYLE}.
 #' @param mode Vector (default, MapLibre) or raster (standard Leaflet PNG tiles).
 #' @param opacity Basemap opacity between zero and one.
 #' @param timeout Per-metadata-request timeout in seconds.
@@ -129,7 +129,7 @@ addIowaBasemap <- function(map, style = c("greyscale", "dark", "color"),
 #' @param api_key Your CARTO basemap key. Defaults to environment variable
 #'   \code{CARTO_API_KEY}.
 #' @param group Leaflet group name; defaults to the CARTO style title.
-#' @param layerId Basemap identifier, default \code{ctremaps-carto-STYLE}.
+#' @param layerId Basemap identifier, default \code{IowaDOTbasemaps-carto-STYLE}.
 #' @param mode Vector (default, MapLibre) or raster (standard Leaflet PNG
 #'   tiles).
 #' @param opacity Basemap opacity between zero and one.
@@ -175,7 +175,25 @@ addCartoBasemap <- function(map, style = c("positron", "dark_matter", "voyager")
   ))
 }
 
-#' Remove one IowaDOTbasemaps basemap
+#' Remove Basemaps Without Clearing Incidents
+#'
+#' Removes only the custom \code{IowaDOTbasemaps_basemap} category. Does not call
+#' \code{clearShapes()}, \code{clearMarkers()}, \code{clearTiles()}, or clear
+#' user overlay groups.
+#'
+#' @details
+#' Regular \code{addTiles()} layers are outside this category. Conversely,
+#' \code{clearTiles()} does not remove IowaDOTbasemaps basemaps, including CARTO raster
+#' mode. Standard \code{clearGroup()}, \code{hideGroup()}, \code{showGroup()} and
+#' layer controls work, provided basemaps and incidents have separate group names.
+#'
+#' @param map A Leaflet widget or proxy.
+#' @param layerId The exact ID passed to a IowaDOTbasemaps basemap function.
+#'
+#' @aliases removeBasemap
+#'
+#' @return The map object.
+#'
 #' @export
 removeBasemap <- function(map, layerId) {
   .scalar_text(layerId, "layerId")
@@ -183,14 +201,57 @@ removeBasemap <- function(map, layerId) {
   leaflet::invokeMethod(map, NULL, "IowaDOTbasemapsRemove", layerId)
 }
 
-#' Remove only basemaps managed by IowaDOTbasemaps
+#' Inspect and Refresh Iowa DOT Basemap Definitions
+#'
+#' Lists configured basemaps, checks current public Web Map and child-layer
+#' metadata, or saves a refreshed catalog. The installed package is never
+#' modified by these functions.
+#'
+#' @details
+#' Set \code{options(IowaDOTbasemaps.dot_catalog = "path/to/catalog.json")} to use a
+#' saved catalog, or supply the parsed catalog list. The option is
+#' session-scoped. A date change is a metadata signal, not evidence that all
+#' roadway geometry changed. Unchanged dates cannot prove identical tile bytes.
+#' Failed checks return \code{changed = NA}, not FALSE. Refresh validates all
+#' three entries before writing. Tiles and complete styles are not stored in
+#' this catalog.
+#'
+#' @param timeout Per-request timeout in seconds.
+#' @param file Destination JSON path; its parent directory must exist.
+#' @param item_ids Optional named character vector of replacement Web Map IDs,
+#'   using names \code{greyscale}, \code{dark}, or \code{color}.
+#' @param overwrite Allow replacement of an existing destination file.
+#'
+#' @aliases checkDOTBasemaps refreshDOTBasemaps
+#'
+#' @return \code{dotBasemaps()} returns a data frame. \code{checkDOTBasemaps()}
+#'   returns dates, a change indicator and per-map status.
+#'   \code{refreshDOTBasemaps()} invisibly returns the normalized saved path.
+#'
+#' @examples
+#' dotBasemaps()
+#' \dontrun{
+#' checkDOTBasemaps()
+#' refreshDOTBasemaps("dot-basemaps-current.json")
+#' options(IowaDOTbasemaps.dot_catalog = "dot-basemaps-current.json")
+#' }
 #' @export
 clearBasemaps <- function(map) {
   map <- .attach(map, FALSE)
   leaflet::invokeMethod(map, NULL, "IowaDOTbasemapsClear")
 }
 
-#' Run the included Shiny regression example
+#' Run the Shiny Basemap Regression Example
+#'
+#' Launches an app exercising basemap replacement, incident proxy updates,
+#' popups, multiple maps and a hidden tab. CARTO requires your basemap key;
+#' Iowa DOT does not currently require a key.
+#'
+#' @param ... Arguments to \code{shiny::runApp()}, such as
+#'   \code{launch.browser = TRUE}.
+#'
+#' @return The result of \code{shiny::runApp()}.
+#'
 #' @export
 runBasemapExample <- function(...) {
   if (!requireNamespace("shiny", quietly = TRUE))

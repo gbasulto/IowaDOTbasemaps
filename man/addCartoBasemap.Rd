@@ -25,7 +25,7 @@ addCartoBasemap(
 
 \item{group}{Leaflet group name; defaults to the CARTO style title.}
 
-\item{layerId}{Basemap identifier, default \code{ctremaps-carto-STYLE}.}
+\item{layerId}{Basemap identifier, default \code{IowaDOTbasemaps-carto-STYLE}.}
 
 \item{mode}{Vector (default, MapLibre) or raster (standard Leaflet PNG
 tiles).}

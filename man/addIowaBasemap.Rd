@@ -25,7 +25,7 @@ addIowaBasemap(
 
 \item{group}{Leaflet group name; defaults to the CARTO style title.}
 
-\item{layerId}{Basemap identifier, default \code{ctremaps-carto-STYLE}.}
+\item{layerId}{Basemap identifier, default \code{IowaDOTbasemaps-carto-STYLE}.}
 
 \item{opacity}{Basemap opacity between zero and one.}
 

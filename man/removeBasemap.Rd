@@ -2,10 +2,26 @@
 % Please edit documentation in R/basemaps.R
 \name{removeBasemap}
 \alias{removeBasemap}
-\title{Remove one IowaDOTbasemaps basemap}
+\title{Remove Basemaps Without Clearing Incidents}
 \usage{
 removeBasemap(map, layerId)
 }
+\arguments{
+\item{map}{A Leaflet widget or proxy.}
+
+\item{layerId}{The exact ID passed to a IowaDOTbasemaps basemap function.}
+}
+\value{
+The map object.
+}
 \description{
-Remove one IowaDOTbasemaps basemap
+Removes only the custom \code{IowaDOTbasemaps_basemap} category. Does not call
+\code{clearShapes()}, \code{clearMarkers()}, \code{clearTiles()}, or clear
+user overlay groups.
+}
+\details{
+Regular \code{addTiles()} layers are outside this category. Conversely,
+\code{clearTiles()} does not remove IowaDOTbasemaps basemaps, including CARTO raster
+mode. Standard \code{clearGroup()}, \code{hideGroup()}, \code{showGroup()} and
+layer controls work, provided basemaps and incidents have separate group names.
 }

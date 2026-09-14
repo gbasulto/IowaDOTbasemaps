@@ -2,10 +2,19 @@
 % Please edit documentation in R/basemaps.R
 \name{runBasemapExample}
 \alias{runBasemapExample}
-\title{Run the included Shiny regression example}
+\title{Run the Shiny Basemap Regression Example}
 \usage{
 runBasemapExample(...)
 }
+\arguments{
+\item{...}{Arguments to \code{shiny::runApp()}, such as
+\code{launch.browser = TRUE}.}
+}
+\value{
+The result of \code{shiny::runApp()}.
+}
 \description{
-Run the included Shiny regression example
+Launches an app exercising basemap replacement, incident proxy updates,
+popups, multiple maps and a hidden tab. CARTO requires your basemap key;
+Iowa DOT does not currently require a key.
 }
