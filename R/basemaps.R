@@ -45,34 +45,46 @@
   map
 }
 
-#' Add an Authenticated CARTO Basemap
+#' Add an Iowa DOT Vector Basemap
 #'
-#' Adds a CARTO basemap with visible attribution and scoped API-key propagation to CARTO basemap hosts.
+#' Adds a managed vector basemap below ordinary Leaflet overlays. Resolves the
+#' Web Map's feature and reference layers and their styles. Supplies its own
+#' locally bundled JavaScript dependencies.
 #'
 #' @details
-#' The key reaches the browser in map data and requests, including in saved HTML.
-#' Environment variables keep it out of your source code, not secret from viewers.
-#' Use only a customer basemap key intended for browser use. Never supply
-#' privileged account credentials. Normalization of a vector style never forwards
-#' this key to non-CARTO hosts. Raster mode is useful when WebGL is unavailable,
-#' but is subject to CARTO's raster-service lifecycle.
+#' Requires Web Mercator, internet access and a WebGL-capable browser. Default
+#' live mode follows changes published under the same Web Map ID. Reference
+#' layers remain below incident overlays. Browser errors are shown on the map
+#' and reported as \code{input$MAPID_basemap_status} in Shiny. Initial loading,
+#' successful loading, warnings and errors are asynchronous; successfully
+#' constructing the R widget is not proof that its remote tiles loaded.
 #'
-#' @param map A Leaflet widget or proxy.
-#' @param style CARTO style name.
-#' @param api_key Your CARTO basemap key. Defaults to environment variable \code{CARTO_API_KEY}.
-#' @param group Leaflet group name; defaults to the CARTO style title.
-#' @param layerId Basemap identifier, default \code{IowaDOTbasemaps-carto-STYLE}.
-#' @param mode Vector (default, MapLibre) or raster (standard Leaflet PNG tiles).
-#' @param opacity Basemap opacity between zero and one.
-#' @param timeout Per-metadata-request timeout in seconds.
+#' @param map A \code{leaflet()} or \code{leafletProxy()} object.
+#' @param style One of \code{"greyscale"}, \code{"dark"}, or \code{"color"}.
+#' @param group Leaflet group name. Defaults to the DOT title. Use a group
+#'   separate from incident overlays.
+#' @param layerId Basemap identifier, default \code{ctremaps-dot-STYLE}. Reuse
+#'   an ID to replace only that basemap.
+#' @param labels Include visible reference/label layers from the DOT Web Map.
+#' @param item_id Optional replacement public ArcGIS Web Map item ID. Not a
+#'   tile-layer ID.
+#' @param source Resolve the current Web Map in the browser, or use saved layer
+#'   definitions. Both fetch styles and tiles online.
+#' @param fallback When TRUE, a failed live Web Map request uses saved layer
+#'   definitions with a visible warning. Does not recover style/tile failures.
+#' @param refresh Bypass the one-hour, per-page metadata cache and request
+#'   revalidation of metadata. Does not force tile re-downloads.
+#' @param opacity Overall basemap opacity from zero to one.
+#' @param timeout Timeout in seconds for each metadata HTTP request.
 #'
-#' @return The map object.
+#' @return The map object, suitable for a pipe.
+#'
+#' @seealso \code{\link{addCartoBasemap}}, \code{\link{dotBasemaps}},
+#'   \code{\link{clearBasemaps}}
 #'
 #' @examples
-#' \dontrun{
-#' leaflet::leaflet() |> addCartoBasemap("positron")
-#' leaflet::leaflet() |> addCartoBasemap("voyager", mode = "raster")
-#' }
+#' library(leaflet)
+#' leaflet() |> addIowaBasemap("color") |> setView(-93.6, 42.0, 8)
 #' @export
 addIowaBasemap <- function(map, style = c("greyscale", "dark", "color"),
                           group = NULL, layerId = NULL, labels = TRUE,

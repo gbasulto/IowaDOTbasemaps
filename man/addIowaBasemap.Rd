@@ -2,7 +2,7 @@
 % Please edit documentation in R/basemaps.R
 \name{addIowaBasemap}
 \alias{addIowaBasemap}
-\title{Add an Authenticated CARTO Basemap}
+\title{Add an Iowa DOT Vector Basemap}
 \usage{
 addIowaBasemap(
   map,
@@ -19,39 +19,55 @@ addIowaBasemap(
 )
 }
 \arguments{
-\item{map}{A Leaflet widget or proxy.}
+\item{map}{A \code{leaflet()} or \code{leafletProxy()} object.}
 
-\item{style}{CARTO style name.}
+\item{style}{One of \code{"greyscale"}, \code{"dark"}, or \code{"color"}.}
 
-\item{group}{Leaflet group name; defaults to the CARTO style title.}
+\item{group}{Leaflet group name. Defaults to the DOT title. Use a group
+separate from incident overlays.}
 
-\item{layerId}{Basemap identifier, default \code{IowaDOTbasemaps-carto-STYLE}.}
+\item{layerId}{Basemap identifier, default \code{ctremaps-dot-STYLE}. Reuse
+an ID to replace only that basemap.}
 
-\item{opacity}{Basemap opacity between zero and one.}
+\item{labels}{Include visible reference/label layers from the DOT Web Map.}
 
-\item{timeout}{Per-metadata-request timeout in seconds.}
+\item{item_id}{Optional replacement public ArcGIS Web Map item ID. Not a
+tile-layer ID.}
 
-\item{api_key}{Your CARTO basemap key. Defaults to environment variable \code{CARTO_API_KEY}.}
+\item{source}{Resolve the current Web Map in the browser, or use saved layer
+definitions. Both fetch styles and tiles online.}
 
-\item{mode}{Vector (default, MapLibre) or raster (standard Leaflet PNG tiles).}
+\item{fallback}{When TRUE, a failed live Web Map request uses saved layer
+definitions with a visible warning. Does not recover style/tile failures.}
+
+\item{refresh}{Bypass the one-hour, per-page metadata cache and request
+revalidation of metadata. Does not force tile re-downloads.}
+
+\item{opacity}{Overall basemap opacity from zero to one.}
+
+\item{timeout}{Timeout in seconds for each metadata HTTP request.}
 }
 \value{
-The map object.
+The map object, suitable for a pipe.
 }
 \description{
-Adds a CARTO basemap with visible attribution and scoped API-key propagation to CARTO basemap hosts.
+Adds a managed vector basemap below ordinary Leaflet overlays. Resolves the
+Web Map's feature and reference layers and their styles. Supplies its own
+locally bundled JavaScript dependencies.
 }
 \details{
-The key reaches the browser in map data and requests, including in saved HTML.
-Environment variables keep it out of your source code, not secret from viewers.
-Use only a customer basemap key intended for browser use. Never supply
-privileged account credentials. Normalization of a vector style never forwards
-this key to non-CARTO hosts. Raster mode is useful when WebGL is unavailable,
-but is subject to CARTO's raster-service lifecycle.
+Requires Web Mercator, internet access and a WebGL-capable browser. Default
+live mode follows changes published under the same Web Map ID. Reference
+layers remain below incident overlays. Browser errors are shown on the map
+and reported as \code{input$MAPID_basemap_status} in Shiny. Initial loading,
+successful loading, warnings and errors are asynchronous; successfully
+constructing the R widget is not proof that its remote tiles loaded.
 }
 \examples{
-\dontrun{
-leaflet::leaflet() |> addCartoBasemap("positron")
-leaflet::leaflet() |> addCartoBasemap("voyager", mode = "raster")
+library(leaflet)
+leaflet() |> addIowaBasemap("color") |> setView(-93.6, 42.0, 8)
 }
+\seealso{
+\code{\link{addCartoBasemap}}, \code{\link{dotBasemaps}},
+  \code{\link{clearBasemaps}}
 }
