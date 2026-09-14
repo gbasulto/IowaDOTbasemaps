@@ -45,7 +45,34 @@
   map
 }
 
-#' Add an Iowa DOT vector basemap
+#' Add an Authenticated CARTO Basemap
+#'
+#' Adds a CARTO basemap with visible attribution and scoped API-key propagation to CARTO basemap hosts.
+#'
+#' @details
+#' The key reaches the browser in map data and requests, including in saved HTML.
+#' Environment variables keep it out of your source code, not secret from viewers.
+#' Use only a customer basemap key intended for browser use. Never supply
+#' privileged account credentials. Normalization of a vector style never forwards
+#' this key to non-CARTO hosts. Raster mode is useful when WebGL is unavailable,
+#' but is subject to CARTO's raster-service lifecycle.
+#'
+#' @param map A Leaflet widget or proxy.
+#' @param style CARTO style name.
+#' @param api_key Your CARTO basemap key. Defaults to environment variable \code{CARTO_API_KEY}.
+#' @param group Leaflet group name; defaults to the CARTO style title.
+#' @param layerId Basemap identifier, default \code{ctremaps-carto-STYLE}.
+#' @param mode Vector (default, MapLibre) or raster (standard Leaflet PNG tiles).
+#' @param opacity Basemap opacity between zero and one.
+#' @param timeout Per-metadata-request timeout in seconds.
+#'
+#' @return The map object.
+#'
+#' @examples
+#' \dontrun{
+#' leaflet::leaflet() |> addCartoBasemap("positron")
+#' leaflet::leaflet() |> addCartoBasemap("voyager", mode = "raster")
+#' }
 #' @export
 addIowaBasemap <- function(map, style = c("greyscale", "dark", "color"),
                           group = NULL, layerId = NULL, labels = TRUE,
@@ -96,6 +123,34 @@ addIowaBasemap <- function(map, style = c("greyscale", "dark", "color"),
 }
 
 #' Add an authenticated CARTO basemap
+#'
+#' @param map A Leaflet widget or proxy.
+#' @param style CARTO style string ("positron", "dark_matter", "voyager")
+#' @param api_key Your CARTO basemap key. Defaults to environment variable
+#'   \code{CARTO_API_KEY}.
+#' @param group Leaflet group name; defaults to the CARTO style title.
+#' @param layerId Basemap identifier, default \code{ctremaps-carto-STYLE}.
+#' @param mode Vector (default, MapLibre) or raster (standard Leaflet PNG
+#'   tiles).
+#' @param opacity Basemap opacity between zero and one.
+#' @param timeout Per-metadata-request timeout in seconds.
+#'
+#' @return The map object.
+#' Adds a CARTO basemap with visible attribution and scoped API-key propagation
+#' to CARTO basemap hosts.
+#'
+#' The key reaches the browser in map data and requests, including in saved
+#' HTML. Environment variables keep it out of your source code, not secret from
+#' viewers. Use only a customer basemap key intended for browser use. Never
+#' supply privileged account credentials. Normalization of a vector style never
+#' forwards this key to non-CARTO hosts. Raster mode is useful when WebGL is
+#' unavailable, but is subject to CARTO's raster-service lifecycle.
+#'
+#' @examples
+#' \dontrun{
+#' leaflet::leaflet() |> addCartoBasemap("positron")
+#' leaflet::leaflet() |> addCartoBasemap("voyager", mode = "raster")
+#' }
 #' @export
 addCartoBasemap <- function(map, style = c("positron", "dark_matter", "voyager"),
                             api_key = Sys.getenv("CARTO_API_KEY"),

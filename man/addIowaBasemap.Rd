@@ -2,7 +2,7 @@
 % Please edit documentation in R/basemaps.R
 \name{addIowaBasemap}
 \alias{addIowaBasemap}
-\title{Add an Iowa DOT vector basemap}
+\title{Add an Authenticated CARTO Basemap}
 \usage{
 addIowaBasemap(
   map,
@@ -18,6 +18,40 @@ addIowaBasemap(
   timeout = 30
 )
 }
+\arguments{
+\item{map}{A Leaflet widget or proxy.}
+
+\item{style}{CARTO style name.}
+
+\item{group}{Leaflet group name; defaults to the CARTO style title.}
+
+\item{layerId}{Basemap identifier, default \code{ctremaps-carto-STYLE}.}
+
+\item{opacity}{Basemap opacity between zero and one.}
+
+\item{timeout}{Per-metadata-request timeout in seconds.}
+
+\item{api_key}{Your CARTO basemap key. Defaults to environment variable \code{CARTO_API_KEY}.}
+
+\item{mode}{Vector (default, MapLibre) or raster (standard Leaflet PNG tiles).}
+}
+\value{
+The map object.
+}
 \description{
-Add an Iowa DOT vector basemap
+Adds a CARTO basemap with visible attribution and scoped API-key propagation to CARTO basemap hosts.
+}
+\details{
+The key reaches the browser in map data and requests, including in saved HTML.
+Environment variables keep it out of your source code, not secret from viewers.
+Use only a customer basemap key intended for browser use. Never supply
+privileged account credentials. Normalization of a vector style never forwards
+this key to non-CARTO hosts. Raster mode is useful when WebGL is unavailable,
+but is subject to CARTO's raster-service lifecycle.
+}
+\examples{
+\dontrun{
+leaflet::leaflet() |> addCartoBasemap("positron")
+leaflet::leaflet() |> addCartoBasemap("voyager", mode = "raster")
+}
 }

@@ -15,6 +15,43 @@ addCartoBasemap(
   timeout = 30
 )
 }
+\arguments{
+\item{map}{A Leaflet widget or proxy.}
+
+\item{style}{CARTO style string ("positron", "dark_matter", "voyager")}
+
+\item{api_key}{Your CARTO basemap key. Defaults to environment variable
+\code{CARTO_API_KEY}.}
+
+\item{group}{Leaflet group name; defaults to the CARTO style title.}
+
+\item{layerId}{Basemap identifier, default \code{ctremaps-carto-STYLE}.}
+
+\item{mode}{Vector (default, MapLibre) or raster (standard Leaflet PNG
+tiles).}
+
+\item{opacity}{Basemap opacity between zero and one.}
+
+\item{timeout}{Per-metadata-request timeout in seconds.}
+}
+\value{
+The map object.
+Adds a CARTO basemap with visible attribution and scoped API-key propagation
+to CARTO basemap hosts.
+
+The key reaches the browser in map data and requests, including in saved
+HTML. Environment variables keep it out of your source code, not secret from
+viewers. Use only a customer basemap key intended for browser use. Never
+supply privileged account credentials. Normalization of a vector style never
+forwards this key to non-CARTO hosts. Raster mode is useful when WebGL is
+unavailable, but is subject to CARTO's raster-service lifecycle.
+}
 \description{
 Add an authenticated CARTO basemap
+}
+\examples{
+\dontrun{
+leaflet::leaflet() |> addCartoBasemap("positron")
+leaflet::leaflet() |> addCartoBasemap("voyager", mode = "raster")
+}
 }
