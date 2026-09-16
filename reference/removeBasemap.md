@@ -1,6 +1,7 @@
 # Remove Basemaps Without Clearing Incident
 
-Removes only the custom `ctremaps_basemap` category. Does not call
+Removes only the custom `IowaDOTbasemaps_basemap` category. Does not
+call
 [`clearShapes()`](https://rstudio.github.io/leaflet/reference/remove.html),
 [`clearMarkers()`](https://rstudio.github.io/leaflet/reference/remove.html),
 [`clearTiles()`](https://rstudio.github.io/leaflet/reference/remove.html),
