@@ -1,6 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<!-- badges: start -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/IowaDOTbasemaps)](https://CRAN.R-project.org/package=IowaDOTbasemaps)
+<!-- badges: end -->
+
 # IowaDOTbasemaps
 
 Iowa DOT for R Leaflet maps and Shiny. Version 0.1.0.
