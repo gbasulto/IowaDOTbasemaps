@@ -8,6 +8,8 @@ status](https://www.r-pkg.org/badges/version/IowaDOTbasemaps)](https://CRAN.R-pr
 [![R-CMD-check](https://github.com/gbasulto/IowaDOTbasemaps/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/gbasulto/IowaDOTbasemaps/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![Codecov test
+coverage](https://codecov.io/gh/gbasulto/IowaDOTbasemaps/graph/badge.svg)](https://app.codecov.io/gh/gbasulto/IowaDOTbasemaps)
 <!-- badges: end -->
 
 # IowaDOTbasemaps
