@@ -2,8 +2,9 @@ Package: IowaDOTbasemaps
 Type: Package
 Title: Iowa DOT and CARTO Basemaps for Leaflet
 Version: 0.1.0
-Authors@R: person("Guillermo", "Basulto-Elias", role = c("aut", "cre"),
-    email = "basulto@iastate.edu")
+Authors@R: 
+    person("Guillermo", "Basulto-Elias", , "guillermobasulto@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5205-2190"))
 Description: Adds live Iowa Department of Transportation vector basemaps to 
   Leaflet maps and Shiny map proxies. Keeps basemap rendering below ordinary 
   incident overlays, manages asynchronous layer removal, and provides catalog 
