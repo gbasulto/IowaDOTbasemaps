@@ -6,6 +6,15 @@
 \usage{
 refreshDOTBasemaps(file, item_ids = NULL, overwrite = FALSE, timeout = 30)
 }
+\arguments{
+\item{file}{File.}
+
+\item{item_ids}{IDs.}
+
+\item{overwrite}{TRUE/FALSE.}
+
+\item{timeout}{Timeout.}
+}
 \description{
 Save a refreshed catalog without modifying the installed package
 }

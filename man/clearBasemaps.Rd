@@ -2,46 +2,25 @@
 % Please edit documentation in R/basemaps.R
 \name{clearBasemaps}
 \alias{clearBasemaps}
-\alias{checkDOTBasemaps}
-\alias{refreshDOTBasemaps}
-\title{Inspect and Refresh Iowa DOT Basemap Definitions}
+\title{Remove Basemaps Without Clearing Incidents}
 \usage{
 clearBasemaps(map)
 }
 \arguments{
-\item{timeout}{Per-request timeout in seconds.}
-
-\item{file}{Destination JSON path; its parent directory must exist.}
-
-\item{item_ids}{Optional named character vector of replacement Web Map IDs,
-using names \code{greyscale}, \code{dark}, or \code{color}.}
-
-\item{overwrite}{Allow replacement of an existing destination file.}
+\item{map}{A Leaflet widget or proxy.}
 }
 \value{
-\code{dotBasemaps()} returns a data frame. \code{checkDOTBasemaps()}
-  returns dates, a change indicator and per-map status.
-  \code{refreshDOTBasemaps()} invisibly returns the normalized saved path.
+The map object.
 }
 \description{
-Lists configured basemaps, checks current public Web Map and child-layer
-metadata, or saves a refreshed catalog. The installed package is never
-modified by these functions.
+Removes only the custom \code{ctremaps_basemap} category. Does not call
+\code{clearShapes()}, \code{clearMarkers()}, \code{clearTiles()}, or clear
+user overlay groups.
 }
 \details{
-Set \code{options(IowaDOTbasemaps.dot_catalog = "path/to/catalog.json")} to use a
-saved catalog, or supply the parsed catalog list. The option is
-session-scoped. A date change is a metadata signal, not evidence that all
-roadway geometry changed. Unchanged dates cannot prove identical tile bytes.
-Failed checks return \code{changed = NA}, not FALSE. Refresh validates all
-three entries before writing. Tiles and complete styles are not stored in
-this catalog.
-}
-\examples{
-dotBasemaps()
-\dontrun{
-checkDOTBasemaps()
-refreshDOTBasemaps("dot-basemaps-current.json")
-options(IowaDOTbasemaps.dot_catalog = "dot-basemaps-current.json")
-}
+Regular \code{addTiles()} layers are outside this category. Conversely,
+\code{clearTiles()} does not remove IowaDOTbasemaps basemaps, including CARTO
+raster mode. Standard \code{clearGroup()}, \code{hideGroup()},
+\code{showGroup()} and layer controls work, provided basemaps and incidents
+have separate group names.
 }

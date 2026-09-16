@@ -187,22 +187,21 @@ addCartoBasemap <- function(map, style = c("positron", "dark_matter", "voyager")
   ))
 }
 
-#' Remove Basemaps Without Clearing Incidents
+#' Remove Basemaps Without Clearing Incident
 #'
-#' Removes only the custom \code{IowaDOTbasemaps_basemap} category. Does not call
+#' Removes only the custom \code{ctremaps_basemap} category. Does not call
 #' \code{clearShapes()}, \code{clearMarkers()}, \code{clearTiles()}, or clear
 #' user overlay groups.
 #'
 #' @details
 #' Regular \code{addTiles()} layers are outside this category. Conversely,
-#' \code{clearTiles()} does not remove IowaDOTbasemaps basemaps, including CARTO raster
-#' mode. Standard \code{clearGroup()}, \code{hideGroup()}, \code{showGroup()} and
-#' layer controls work, provided basemaps and incidents have separate group names.
+#' \code{clearTiles()} does not remove IowaDOTbasemaps basemaps, including CARTO
+#' raster mode. Standard \code{clearGroup()}, \code{hideGroup()},
+#' \code{showGroup()} and layer controls work, provided basemaps and incidents
+#' have separate group names.
 #'
 #' @param map A Leaflet widget or proxy.
-#' @param layerId The exact ID passed to a IowaDOTbasemaps basemap function.
-#'
-#' @aliases removeBasemap
+#' @param layerId The exact ID passed to a ctremaps basemap function.
 #'
 #' @return The map object.
 #'
@@ -213,40 +212,23 @@ removeBasemap <- function(map, layerId) {
   leaflet::invokeMethod(map, NULL, "IowaDOTbasemapsRemove", layerId)
 }
 
-#' Inspect and Refresh Iowa DOT Basemap Definitions
+#' Remove Basemaps Without Clearing Incidents
 #'
-#' Lists configured basemaps, checks current public Web Map and child-layer
-#' metadata, or saves a refreshed catalog. The installed package is never
-#' modified by these functions.
+#' Removes only the custom \code{ctremaps_basemap} category. Does not call
+#' \code{clearShapes()}, \code{clearMarkers()}, \code{clearTiles()}, or clear
+#' user overlay groups.
 #'
 #' @details
-#' Set \code{options(IowaDOTbasemaps.dot_catalog = "path/to/catalog.json")} to use a
-#' saved catalog, or supply the parsed catalog list. The option is
-#' session-scoped. A date change is a metadata signal, not evidence that all
-#' roadway geometry changed. Unchanged dates cannot prove identical tile bytes.
-#' Failed checks return \code{changed = NA}, not FALSE. Refresh validates all
-#' three entries before writing. Tiles and complete styles are not stored in
-#' this catalog.
+#' Regular \code{addTiles()} layers are outside this category. Conversely,
+#' \code{clearTiles()} does not remove IowaDOTbasemaps basemaps, including CARTO
+#' raster mode. Standard \code{clearGroup()}, \code{hideGroup()},
+#' \code{showGroup()} and layer controls work, provided basemaps and incidents
+#' have separate group names.
 #'
-#' @param timeout Per-request timeout in seconds.
-#' @param file Destination JSON path; its parent directory must exist.
-#' @param item_ids Optional named character vector of replacement Web Map IDs,
-#'   using names \code{greyscale}, \code{dark}, or \code{color}.
-#' @param overwrite Allow replacement of an existing destination file.
+#' @param map A Leaflet widget or proxy.
 #'
-#' @aliases checkDOTBasemaps refreshDOTBasemaps
+#' @return The map object.
 #'
-#' @return \code{dotBasemaps()} returns a data frame. \code{checkDOTBasemaps()}
-#'   returns dates, a change indicator and per-map status.
-#'   \code{refreshDOTBasemaps()} invisibly returns the normalized saved path.
-#'
-#' @examples
-#' dotBasemaps()
-#' \dontrun{
-#' checkDOTBasemaps()
-#' refreshDOTBasemaps("dot-basemaps-current.json")
-#' options(IowaDOTbasemaps.dot_catalog = "dot-basemaps-current.json")
-#' }
 #' @export
 clearBasemaps <- function(map) {
   map <- .attach(map, FALSE)

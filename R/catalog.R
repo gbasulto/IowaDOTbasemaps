@@ -76,6 +76,9 @@ dotBasemaps <- function() {
 }
 
 #' Check Web Map and child-layer modification dates and definitions
+#'
+#' @param timeout Timeout.
+#'
 #' @export
 checkDOTBasemaps <- function(timeout = 30) {
   .render_options(1, timeout)
@@ -93,6 +96,12 @@ checkDOTBasemaps <- function(timeout = 30) {
 }
 
 #' Save a refreshed catalog without modifying the installed package
+#'
+#' @param file  File.
+#' @param item_ids IDs.
+#' @param overwrite TRUE/FALSE.
+#' @param timeout Timeout.
+#'
 #' @export
 refreshDOTBasemaps <- function(file, item_ids = NULL, overwrite = FALSE, timeout = 30) {
   .scalar_text(file, "file")

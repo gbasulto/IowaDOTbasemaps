@@ -6,6 +6,9 @@
 \usage{
 checkDOTBasemaps(timeout = 30)
 }
+\arguments{
+\item{timeout}{Timeout.}
+}
 \description{
 Check Web Map and child-layer modification dates and definitions
 }
