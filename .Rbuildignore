@@ -7,3 +7,6 @@
 ^IowaDOTbasemaps\.Rproj$
 ^MAINTENANCE\.md$
 ^VALIDATION\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
