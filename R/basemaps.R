@@ -189,9 +189,9 @@ addCartoBasemap <- function(map, style = c("positron", "dark_matter", "voyager")
 
 #' Remove Basemaps Without Clearing Incident
 #'
-#' Removes only the custom \code{ctremaps_basemap} category. Does not call
-#' \code{clearShapes()}, \code{clearMarkers()}, \code{clearTiles()}, or clear
-#' user overlay groups.
+#' Removes only the custom \code{IowaDOTbasemaps_basemap} category. Does not
+#' call \code{clearShapes()}, \code{clearMarkers()}, \code{clearTiles()}, or
+#' clear user overlay groups.
 #'
 #' @details
 #' Regular \code{addTiles()} layers are outside this category. Conversely,
