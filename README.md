@@ -5,6 +5,7 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/IowaDOTbasemaps)](https://CRAN.R-project.org/package=IowaDOTbasemaps)
+[![R-CMD-check](https://github.com/gbasulto/IowaDOTbasemaps/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/gbasulto/IowaDOTbasemaps/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 # IowaDOTbasemaps
